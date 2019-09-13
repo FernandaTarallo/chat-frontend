@@ -15,35 +15,53 @@ export default class Login extends React.Component {
 
     render(){
         return(
-            <div className="div-content">
-                <div className="row">
-                    <div className="login-content col-lg-5"></div>
-                        <form>
-                            <div className="form-group">
-                                <label for="exampleInputEmail1">Username</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="userHelp" placeholder="Enter username"/>
+            <div className="box">
+                <div className="container d-flex justify-content-center">
+                    
+                        <div className="form-box bg-transparent col-md-4">
+                            <div className="justify-content-center d-flex mb-5">
+                                <i className="material-icons text-white user-big-icon">person_outline</i>
                             </div>
+                            <form>
+                                <div className="form-group mb-4">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-transparent">
+                                                <i class="material-icons text-white">person_outline</i>
+                                            </span>
+                                        </div>
+                                        <input type="text" className="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="userHelp" placeholder="Enter username"/>
+                                    </div>
+                                </div>
+                                <div className="form-group mb-4">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-transparent">
+                                                <i class="material-icons text-white">mail_outline</i>
+                                            </span>
+                                        </div>
+                                        <input type="email" className="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
+                                    </div>
+                                </div>
 
-                            <div className="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
-                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                            </div>
-
-                            <div className="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
-                            </div>
-
-                            <div className="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                        
-                            <button type="submit" class="btn btn-primary">Logar</button>
-
-                        </form>
-                    </div>
+                                <div className="form-group mb-4">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-transparent">
+                                                <i class="material-icons text-white">lock_outline</i>
+                                            </span>
+                                        </div>
+                                        <input type="password" className="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password"/>
+                                    </div>
+                                </div>
+                                <div className="text-center">
+                                    <button type="submit" className="btn btn-lg btn-register btn-block">Registrar</button>
+                                </div>
+                                <hr className="white-line"/>
+                            </form>
+                        </div>
+                   
+                </div>
             </div>
         );
         

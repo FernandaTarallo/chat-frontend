@@ -11,3 +11,41 @@
     #292a39, #525472
   );
 }
+
+.box{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image:linear-gradient(to top,#47abff,#5ea0f7,#7b94f1, #9274c9);
+}
+
+/* .form-box {
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 40px;
+  background-color: #fff;
+  box-shadow: 0px 0px 20px 2px grey;
+} */
+
+.btn-register{
+  background-color:#9274c9;
+  color:#fff;
+}
+
+.title-register{
+  font-family: 'Montserrat', sans-serif;
+  color:#3d4255;
+}
+
+.user-big-icon {
+  font-size: 60px;
+  border: 2px solid white;
+  border-radius: 100%;
+  padding: 20px;
+}
+
+.white-line {
+  border: 0.6px solid white;
+  margin-top:30px;
+}
