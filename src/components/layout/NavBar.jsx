@@ -12,10 +12,12 @@ export default class NavBar extends React.Component{
 
     render(){
         return (
-            <nav className="navbar navbar-light bg-light">
-                <a className="ml-5" href="/">
-                    <img src={Logo} className="logo-navbar"></img>
-                </a>
+            <nav className="nav-box fixed-top d-flex flex-row justify-content-end align-items-center">
+                <label className="sr-only" for="">Username</label>
+                <div className="input-group col-md-4 position-relative align-items-center">
+                    <i className="material-icons search">search</i>
+                    <input type="text" className="form-control" id="" placeholder="Username"/>
+                </div>
             </nav>
         );
     }

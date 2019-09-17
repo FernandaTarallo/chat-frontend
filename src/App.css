@@ -49,3 +49,32 @@
   border: 0.6px solid white;
   margin-top:30px;
 }
+
+.side-box{
+  width:100px;
+  height:100vh;
+  background-image:linear-gradient(to top,#47abff,#5ea0f7,#7b94f1, #9274c9);
+  z-index:9999;
+  position:fixed;
+}
+
+.chat-big-icon{
+  font-size: 60px;
+  padding: 20px;
+}
+
+.chat-icons{
+  font-size: 40px;
+  padding: 10px;
+}
+
+.nav-box{
+  height:100px;
+  background-color: #eff0f1;
+}
+.search{
+  position: absolute;
+  outline:none;
+  z-index:20;
+  right:20px;
+}
