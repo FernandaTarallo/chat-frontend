@@ -12,13 +12,34 @@ export default class NavBar extends React.Component{
 
     render(){
         return (
-            <nav className="nav-box fixed-top d-flex flex-row justify-content-end align-items-center">
-                <label className="sr-only" for="">Username</label>
-                <div className="input-group col-md-4 position-relative align-items-center">
-                    <i className="material-icons search">search</i>
-                    <input type="text" className="form-control" id="" placeholder="Username"/>
+            <div>
+                <div className="d-flex align-items-center flex-column">
+                    <div className="d-flex mb-5">
+                        <i className="material-icons text-white chat-big-icon">chat_bubble_outline</i>
+                    </div>
+
+                    <div className="d-flex mb-3">
+                        <i className="material-icons text-white chat-icons">person</i>
+                    </div>
+
+                    <div className="d-flex mb-3">
+                        <i className="material-icons text-white chat-icons">message</i>
+                    </div>
+
+                    <div className="d-flex mb-3">
+                        <i className="material-icons text-white chat-icons">people</i>
+                    </div>
+
+                    <div className="d-flex mb-3">
+                        <i className="material-icons text-white chat-icons">settings</i>
+                    </div>
+
+                    <div className="mt-auto d-flex">
+                        <i className="material-icons text-white chat-icons">power_settings_new</i>
+                    </div>
+                    
                 </div>
-            </nav>
+            </div>
         );
     }
 }

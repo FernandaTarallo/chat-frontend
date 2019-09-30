@@ -1,3 +1,6 @@
+.body{
+  height:100vh;
+}
 .logo-navbar{
   width: 50px;
   height: 50px;
@@ -51,11 +54,8 @@
 }
 
 .side-box{
-  width:100px;
-  height:100vh;
+  width:80px;
   background-image:linear-gradient(to top,#47abff,#5ea0f7,#7b94f1, #9274c9);
-  z-index:9999;
-  position:fixed;
 }
 
 .chat-big-icon{
@@ -69,12 +69,38 @@
 }
 
 .nav-box{
-  height:100px;
-  background-color: #eff0f1;
+  height:80px;
+  background-color: #fff;
 }
 .search{
   position: absolute;
   outline:none;
   z-index:20;
   right:20px;
+}
+.content{
+  height:100vh;
+}
+.all-chat{
+  width:350px;
+  background-color: #47abff;
+}
+.all-chat-head{
+  height:80px;
+  background-color: #525472;
+}
+.chat{
+  background-color: bisque;
+}
+.chat-head{
+  height:80px;
+  background-color: aliceblue;
+}
+.active-chat{
+  width:100px;
+  background-color: #9274c9;
+}
+.active-head{
+  height:80px;
+  background-color: teal;
 }
