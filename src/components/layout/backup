@@ -1,0 +1,67 @@
+   <div className="side-box d-flex align-items-center flex-column">
+                    <div className="d-flex mb-5">
+                        <i className="material-icons text-white chat-big-icon">chat_bubble_outline</i>
+                    </div>
+
+                    <div className="d-flex mb-3">
+                        <i className="material-icons text-white chat-icons">person</i>
+                    </div>
+
+                    <div className="d-flex mb-3">
+                        <i className="material-icons text-white chat-icons">message</i>
+                    </div>
+
+                    <div className="d-flex mb-3">
+                        <i className="material-icons text-white chat-icons">people</i>
+                    </div>
+
+                    <div className="d-flex mb-3">
+                        <i className="material-icons text-white chat-icons">settings</i>
+                    </div>
+
+                    <div className="mt-auto d-flex">
+                        <i className="material-icons text-white chat-icons">power_settings_new</i>
+                    </div>
+                </div>
+                <div class="w-100 d-flex flex-column ">
+                    <div className="nav-box d-flex p-2 align-items-center justify-content-between">
+                        <form>
+                            <div className="input-group">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text bg-black">
+                                        <i className="material-icons">search</i>
+                                    </span>
+                                </div>
+                                <input type="text" className="form-control" id="search" placeholder="Pesquisa"/>
+                            </div>
+                        </form>
+
+                       
+                        <div className="d-flex align-items-center">
+                            <i className="material-icons">notifications</i>
+                            <span>Fernanda Tarallo</span>
+                        </div>
+                    </div>
+
+                    <div className="content d-flex bd-highlight">
+                        <div className="all-chat d-flex flex-column">
+                            <div class="all-chat-head p-2 d-flex align-items-center">Chat</div>
+                            <div class="d-flex flex-row flex-grow-1 bd-highlight">
+                                <div className="d-flex flex-column flex-grow-1">
+                                    <div className="user-chat">Conversa 1</div>
+                                    <div className="user-chat">Conversa 2</div>
+                                    <div className="user-chat">Conversa 3</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div className="chat d-flex flex-grow-1 flex-column">
+                            <div class="chat-head bd-highlight">Flex item</div>
+                            <div class="flex-grow-1 bd-highlight">Flex item</div>
+                        </div>
+                        <div className="active-chat d-flex flex-column">
+                            <div class="active-head d-flex align-items-center justify-content-center">Ativos</div>
+                            <div class="flex-grow-1 bd-highlight">Flex item</div>
+                        </div>
+                    </div>
+                </div>
