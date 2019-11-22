@@ -23,14 +23,15 @@ export default class Login extends React.Component {
 
         event.preventDefault()
 
-        axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-        
+        console.log(this.state.email)
+        console.log(this.state.username)
+        console.log(this.state.password)
         try{
-            const register = await axios.post('http://localhost:4000/users', {
+            const register = await axios.post('http://localhost:3000/users', {
                 email: this.state.email,
-                username: this.state.username,
+                name: this.state.username,
                 password: this.state.password
-            });
+            })
             
             this.switchMode()
 
@@ -45,7 +46,9 @@ export default class Login extends React.Component {
                 type: 'success',
                 title: 'Cadastro efetuado com sucesso.'
               })
+
             console.log("Certou"+JSON.stringify(register.data));
+            
         }catch(err){
             console.log(JSON.stringify(err));
         }

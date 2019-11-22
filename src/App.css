@@ -69,12 +69,7 @@
   height:80px;
   background-color: #fff;
 }
-.search{
-  position: absolute;
-  outline:none;
-  z-index:20;
-  right:20px;
-}
+
 .content{
   height:90vh;
 }
@@ -92,7 +87,7 @@
 
 .conversations{
   overflow-y: scroll;
-  height: 80vh;
+  height: 70vh;
 }
 
 .chat{
@@ -101,6 +96,10 @@
 .chat-head{
   height:80px;
   background-image:linear-gradient(to top,#F2F8FD,#EFF2FA,#ECEDF4);
+}
+.img-post-icon{
+  width: 60px;
+  height: 60px;
 }
 .active-chat{
   width:150px;
@@ -116,6 +115,7 @@
 .user-chat{
   height:80px;
   border-bottom: 1px solid #ECEDF4;
+  position:absolute;
 }
 
 .link{

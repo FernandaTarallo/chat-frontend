@@ -11,8 +11,12 @@ export default class AllChat extends React.Component{
 
     render(){
         return(
-            <div className="content d-flex flex-row">
-                <h1>teste</h1>
+            <div classname="box">
+                <div classname="chat-box d-flex flex-column">
+                    <div classname="chat-messages d-flex">
+                        Conversa da pessoa
+                    </div>
+                </div>
             </div>
         )
     }
