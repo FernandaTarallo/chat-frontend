@@ -27,7 +27,7 @@ export default class Login extends React.Component {
         console.log(this.state.username)
         console.log(this.state.password)
         try{
-            const register = await axios.post('http://localhost:3000/users', {
+            const register = await axios.post('http://localhost:3001/users', {
                 email: this.state.email,
                 name: this.state.username,
                 password: this.state.password
