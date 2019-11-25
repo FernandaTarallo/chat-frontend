@@ -2,6 +2,10 @@ import React from "react"
 import { Link } from 'react-router-dom';
 import SearchBox from '../search/SearchBox'
 import Chat from '../chat/Chat'
+import Message from '../message/message'
+import Button from '../button/button'
+import Photo from '../photo/photo'
+import Name from '../name/name'
 import axios from 'axios'
 
 export default class Layout extends React.Component {
@@ -33,32 +37,34 @@ export default class Layout extends React.Component {
                 <div className="col-md-10 p-0">
                     <div className="content w-100 d-flex">
                         <div className="all-chat d-flex flex-column">
-                            <div class="all-chat-head p-2 d-flex align-items-center">
-                                <div className="text-left ml-3 mt-2 form-inline">
-                                    <img className="img-post-icon" src={require('../../batman.png')} /> 
-                                    <p><h3>Fernanda Tarallo</h3></p>
-                                </div>
+                            <div class="all-chat-head d-flex align-items-center">
+                                <Photo/>
+                                <Name/>
                             </div>
+                            <div className="search-box d-flex align-items-center justify-content-center">
                                 <SearchBox/>
+                            </div>
                             <div class="d-flex bd-highlight">
                                 <div className="conversations flex-column flex-grow-1">
                                     <div className="user-chat">
-                                        <div className="text-left ml-3 mt-2 form-inline">
-                                            <img className="img-post-icon" src={require('../../batman.png')} />
-                                        </div>
+                                        <Photo/>
+                                        <Name/>
                                     </div>                                
                                 </div>
                             </div>
                         </div>
                         
                         <div className="chat d-flex flex-grow-1 flex-column">
-                            <div class="chat-head bd-highlight">
-                            <div className="text-left ml-3 mt-2 form-inline">
-                                <img className="img-post-icon" src={require('../../batman.png')} /> 
+                            <div class="chat-head d-flex flex-row align-items-center">
+                                <Photo/>
+                                <Name/>
                             </div>
+                            <div className="box-message flex-grow-1 bd-highlight">
+                                <Message/>
                             </div>
-                            <div class="flex-grow-1 bd-highlight">
-                                <Chat/>
+                            <div className="input-message-box d-flex align-items-center justify-content-between">
+                                <input type="text" className="input-message" placeholder="Digite uma mensagem"/>
+                                <Button/>
                             </div>
                         </div>
                     </div>
