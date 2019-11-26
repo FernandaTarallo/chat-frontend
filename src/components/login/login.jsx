@@ -1,7 +1,8 @@
 import React from 'react'
 import Logo from '../../icon.png'
 import BackImage from '../../background-image.jpg'
-import axios from 'axios'
+import api from '../../services/api'
+import { setToken, setAuthUser } from '../../services/auth'
 import { Redirect } from 'react-router-dom';
 import Swal from 'sweetalert2'
 
@@ -23,11 +24,8 @@ export default class Login extends React.Component {
 
         event.preventDefault()
 
-        console.log(this.state.email)
-        console.log(this.state.username)
-        console.log(this.state.password)
         try{
-            const register = await axios.post('http://localhost:3001/users', {
+            const register = await api.post('/users', {
                 email: this.state.email,
                 name: this.state.username,
                 password: this.state.password
@@ -86,8 +84,21 @@ export default class Login extends React.Component {
 
         event.preventDefault()
 
-        console.log('Foi');
-        return <Redirect to='/'/>
+        try{
+            const login = await api.post('/users/auth', {
+                email: this.state.email,
+                password: this.state.password
+            })
+            
+            setToken(login.data.token)
+            setAuthUser(login.data.user)
+
+            return <Redirect to='/'/>
+            
+            
+        }catch(err){
+            console.log(JSON.stringify(err));
+        }
        
     }
 

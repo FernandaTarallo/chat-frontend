@@ -2,7 +2,8 @@ import React from "react"
 import { Link } from 'react-router-dom';
 import SearchBox from '../search/SearchBox'
 import Chat from '../chat/Chat'
-import axios from 'axios'
+import api from '../../services/api'
+import { removeToken, removeAuthUser } from "../../services/auth";
 
 export default class Layout extends React.Component {
     
@@ -10,21 +11,20 @@ export default class Layout extends React.Component {
         super(props)
         this.state = {
             conversations:[],
-            id:"",
-            nome: "",
-            email: "",
-            tipo: "",
+            user: null
         }
-        axios.get('http://localhost:3001/usuarios')
-        .then(res => {
-            console.log(res.data.usuarios);
-            this.setState({
-              usuarios : res.data.usuarios,
-            })
-            console.log(this.state);
-        }).catch((e)=>{
-            console.log(e);
+    }
+
+    componentDidMount = async () => {
+
+    //    removeToken()
+    //    removeAuthUser()
+
+        this.setState({
+            user: localStorage.getItem("@auth-user")
         })
+
+        console.log(this.state.user)
     }
 
     render(){
@@ -36,7 +36,7 @@ export default class Layout extends React.Component {
                             <div class="all-chat-head p-2 d-flex align-items-center">
                                 <div className="text-left ml-3 mt-2 form-inline">
                                     <img className="img-post-icon" src={require('../../batman.png')} /> 
-                                    <p><h3>Fernanda Tarallo</h3></p>
+                                    <p><h3></h3></p>
                                 </div>
                             </div>
                                 <SearchBox/>
