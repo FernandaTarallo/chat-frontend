@@ -11,7 +11,7 @@ export default class Button extends React.Component {
     render(){
         return(
            <div>
-               <button type="button" className="btn btn-sm">Enviar</button>
+               <button onClick={this.props.sendMessage} type="button" className="btn btn-sm">Enviar</button>
            </div>
         );
     }

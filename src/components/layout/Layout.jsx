@@ -8,14 +8,20 @@ import Message from '../message/message'
 import Button from '../button/button'
 import Photo from '../photo/photo'
 import Name from '../name/name'
+import * as io from 'socket.io-client'
 
 export default class Layout extends React.Component {
     
     constructor(props) {
         super(props)
         this.state = {
-            conversations:[],
             user: null,
+            usersList: [],
+            userSelected: null,
+            conversations: [],
+            messages: [],
+            socket: null,
+            messageText: '',
             ready: false
         }
     }
@@ -24,16 +30,93 @@ export default class Layout extends React.Component {
 
         const userId = localStorage.getItem("@auth-user")
 
-        const user = await api.get('/users/'+userId)
+        const socket = io('http://localhost:4000', { query: "id="+userId });
 
-        console.log(user.data)
+        const user = await api.get('/users/'+userId)
 
         this.setState({
             user: user.data,
+            socket: socket, 
+        })
+
+        socket.on('clients_update', async (data) => {
+
+            let users = []
+
+            data.map(async (u) => {
+                let newuser = await api.get('/users/'+u.id)
+
+                console.log(newuser.data)
+
+                newuser.data.password = undefined
+
+                users.push({
+                    user: newuser.data,
+                    socket: u.socket
+                })
+
+                this.setState({
+                    usersList: users
+                })
+    
+            })
+
+        })
+
+        socket.on('new-message', (message) => {
+
+            let messages = this.state.messages
+
+            messages.push(message)
+
+            this.setState({messages})
+
+        })
+
+        this.setState({
             ready: true
         })
 
     }
+
+    selectUser = async (user) => {
+        this.setState({
+            userSelected: user
+        })
+
+        messages
+    }
+
+    changeHandler = event => {
+
+        const name = event.target.name
+        
+        this.setState({
+            
+            [name]: event.target.value
+            
+        })
+    }
+
+    sendMessage = async() => {
+
+        console.log('teste')
+        
+        try{
+            const message = await api.post('/messages/', {
+                idUserOne: this.state.user.id,
+                idUserTwo: this.state.userSelected.user.id,
+                sendFrom: this.state.user.id,
+                text: this.state.messageText
+            })
+
+        }catch(err){
+            console.log(JSON.stringify(err));
+        }
+
+    }
+
+    
 
     render(){
         return(
@@ -43,8 +126,8 @@ export default class Layout extends React.Component {
                         <div className="content w-100 d-flex">
                             <div className="all-chat d-flex flex-column">
 
-                                <div class="all-chat-head d-flex align-items-center">
-                                    <Photo/>
+                                <div className="all-chat-head d-flex align-items-center">
+                                    {/* <Photo/> */}
                                     <Name name={this.state.user.name}/>
                                 </div>
                                 <div className="search-box d-flex align-items-center justify-content-center">
@@ -52,10 +135,16 @@ export default class Layout extends React.Component {
                                 </div>
                                 <div class="d-flex bd-highlight">
                                     <div className="conversations flex-column flex-grow-1">
-                                        <div className="user-chat flex-row align-items-center">
-                                            <Photo/>
-                                            <Name name={this.state.user.name}/>
-                                        </div>                                
+                                       
+                                        {this.state.usersList.map(item => {
+                                            {/* <Photo/> */}
+                                            return (
+                                                <div className="user-chat flex-row align-items-center" onClick={() => this.selectUser(item)}>
+                                                    <Name name={item.user.name}/>
+                                                </div>
+                                            )
+                                        })}
+                                                                    
                                     </div>
                                 </div>
                         
@@ -63,15 +152,26 @@ export default class Layout extends React.Component {
                             
                             <div className="chat d-flex flex-grow-1 flex-column">
                                 <div class="chat-head d-flex flex-row align-items-center">
-                                    <Photo/>
+                                    {/* <Photo/> */}
                                     <Name name={this.state.user.name}/>
                                 </div>
-                                <div className="box-message flex-grow-1 bd-highlight">
-                                    <Message/>
-                                </div>
+                                
+                                    <div className="box-message flex-grow-1 bd-highlight">
+                                        {this.state.messages.map(message => {
+                                            return (
+                                                <Message
+                                                    text={message.text} 
+                                                    side={
+                                                        message.sendFrom === this.state.user.id ? 'right' : 'left'
+                                                    }
+                                                />
+                                            )
+                                        })}
+                                    </div>
+                                
                                 <div className="input-message-box d-flex align-items-center justify-content-between">
-                                    <input type="text" className="input-message" placeholder="Digite uma mensagem"/>
-                                    <Button/>
+                                    <input onChange={this.changeHandler} name="messageText" value={this.state.messageText} type="text" className="input-message" placeholder="Digite uma mensagem"/>
+                                    <Button sendMessage={this.sendMessage}/>
                                 </div>
                             </div>
                         </div>

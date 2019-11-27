@@ -17,6 +17,19 @@ export default class Login extends React.Component {
             username: '',
             password: '',
             classForm: "",
+            redirect: false
+        }
+    }
+
+    setRedirect = () => {
+        this.setState({
+          redirect: true
+        })
+    }
+
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <Redirect to='/' />
         }
     }
 
@@ -93,7 +106,7 @@ export default class Login extends React.Component {
             setToken(login.data.token)
             setAuthUser(login.data.user.id)
 
-            return <Redirect to='/'/>
+            this.setRedirect()
             
             
         }catch(err){
@@ -106,7 +119,7 @@ export default class Login extends React.Component {
 
         return(
             <div className="box">
-
+                {this.renderRedirect()}
                 <div className="container d-flex justify-content-center p-5">
                         <div className={"form-box col-md-4 "+(this.state.animation && "transition")}>
                             <div className="justify-content-center d-flex mb-5">

@@ -10,32 +10,21 @@ export default class Message extends React.Component {
     }
     render(){
         return(
-            <div>
-                <div className="container">
-                    <div className="avatar">
-                        <img className="person-message" src={require('../../batman.png')}/>
-                    </div>
-                    <div className="txt">Lorem ipsum dolor sit amet.</div>
+         
+            <div className={this.props.side == 'right' ? 'container-right' : 'container'}>
+                <div className={this.props.side == 'right' ? 'avatar-right' : 'avatar'}>
+                    <img className={this.props.side == 'right' ? 'person-message-right' : 'person-message'} src={require('../../batman.png')}/>
                 </div>
-                <div className="container">
-                    <div className="avatar">
-                        <img className="person-message" src={require('../../batman.png')}/>
-                    </div>
-                    <div className="txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam iste ratione impedit facere quibusdam odit, iusto consequuntur error alias praesentium.</div>
-                </div>
-                <div className="container-right">
-                    <div className="avatar-right">
-                        <img className="person-message-right" src={require('../../batman.png')}/>
-                    </div>
-                    <div className="txt-right">Lorem ipsum dolor sit amet.</div>
-                </div>
-                <div className="container">
-                    <div className="avatar">
-                        <img className="person-message" src={require('../../batman.png')}/>
-                    </div>
-                    <div className="txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam iste ratione impedit facere quibusdam odit, iusto consequuntur error alias praesentium.</div>
-                </div>
+                <div className={this.props.side == 'right' ? 'txt-right' : 'txt'}>{this.props.text}</div>
             </div>
+
+            // <div className="container-right">
+            // <div className="avatar-right">
+            //     <img className="person-message-right" src={require('../../batman.png')}/>
+            // </div>
+            // <div className="txt-right">Lorem ipsum dolor sit amet.</div>
+            // </div>
+           
         );
     }
 }

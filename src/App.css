@@ -248,10 +248,9 @@ a:link{
 }
 
 .user-chat{
-  height:80px;
+  height:40px;
   width:330px;
   border-bottom: 1px solid #EDEDED;
-  position:absolute;
 }
 .user-chat:hover{
   background-color: #EDEDED;
