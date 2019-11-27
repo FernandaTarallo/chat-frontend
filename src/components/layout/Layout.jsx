@@ -4,6 +4,10 @@ import SearchBox from '../search/SearchBox'
 import Chat from '../chat/Chat'
 import api from '../../services/api'
 import { removeToken, removeAuthUser } from "../../services/auth";
+import Message from '../message/message'
+import Button from '../button/button'
+import Photo from '../photo/photo'
+import Name from '../name/name'
 
 export default class Layout extends React.Component {
     
@@ -11,58 +15,68 @@ export default class Layout extends React.Component {
         super(props)
         this.state = {
             conversations:[],
-            user: null
+            user: null,
+            ready: false
         }
     }
 
     componentDidMount = async () => {
 
-    //    removeToken()
-    //    removeAuthUser()
+        const userId = localStorage.getItem("@auth-user")
+
+        const user = await api.get('/users/'+userId)
+
+        console.log(user.data)
 
         this.setState({
-            user: localStorage.getItem("@auth-user")
+            user: user.data,
+            ready: true
         })
 
-        console.log(this.state.user)
     }
 
     render(){
         return(
             <div className="box">
-                <div className="col-md-10 p-0">
-                    <div className="content w-100 d-flex">
-                        <div className="all-chat d-flex flex-column">
-                            <div class="all-chat-head p-2 d-flex align-items-center">
-                                <div className="text-left ml-3 mt-2 form-inline">
-                                    <img className="img-post-icon" src={require('../../batman.png')} /> 
-                                    <p><h3></h3></p>
+                {this.state.ready &&
+                    <div className="col-md-10 p-0">
+                        <div className="content w-100 d-flex">
+                            <div className="all-chat d-flex flex-column">
+
+                                <div class="all-chat-head d-flex align-items-center">
+                                    <Photo/>
+                                    <Name name={this.state.user.name}/>
                                 </div>
-                            </div>
-                                <SearchBox/>
-                            <div class="d-flex bd-highlight">
-                                <div className="conversations flex-column flex-grow-1">
-                                    <div className="user-chat">
-                                        <div className="text-left ml-3 mt-2 form-inline">
-                                            <img className="img-post-icon" src={require('../../batman.png')} />
-                                        </div>
-                                    </div>                                
+                                <div className="search-box d-flex align-items-center justify-content-center">
+                                    <SearchBox/>
                                 </div>
-                            </div>
-                        </div>
+                                <div class="d-flex bd-highlight">
+                                    <div className="conversations flex-column flex-grow-1">
+                                        <div className="user-chat flex-row align-items-center">
+                                            <Photo/>
+                                            <Name name={this.state.user.name}/>
+                                        </div>                                
+                                    </div>
+                                </div>
                         
-                        <div className="chat d-flex flex-grow-1 flex-column">
-                            <div class="chat-head bd-highlight">
-                            <div className="text-left ml-3 mt-2 form-inline">
-                                <img className="img-post-icon" src={require('../../batman.png')} /> 
                             </div>
-                            </div>
-                            <div class="flex-grow-1 bd-highlight">
-                                <Chat/>
+                            
+                            <div className="chat d-flex flex-grow-1 flex-column">
+                                <div class="chat-head d-flex flex-row align-items-center">
+                                    <Photo/>
+                                    <Name name={this.state.user.name}/>
+                                </div>
+                                <div className="box-message flex-grow-1 bd-highlight">
+                                    <Message/>
+                                </div>
+                                <div className="input-message-box d-flex align-items-center justify-content-between">
+                                    <input type="text" className="input-message" placeholder="Digite uma mensagem"/>
+                                    <Button/>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                }
             </div>
         );
     }

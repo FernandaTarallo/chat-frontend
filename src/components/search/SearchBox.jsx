@@ -5,10 +5,9 @@ export default class SearchBox extends Component {
 
   render() {
     return (
-      <ReactSearchBox
-        placeholder="Procurar ou começar uma nova conversa"
-        callback={record => console.log(record)}
-      />
+      <div>
+        <input type="text" className="input-search" placeholder="Procurar ou começar uma nova conversa"/>
+      </div>
     )
   }
 }

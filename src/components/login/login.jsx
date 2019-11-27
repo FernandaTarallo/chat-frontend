@@ -91,7 +91,7 @@ export default class Login extends React.Component {
             })
             
             setToken(login.data.token)
-            setAuthUser(login.data.user)
+            setAuthUser(login.data.user.id)
 
             return <Redirect to='/'/>
             
@@ -107,7 +107,7 @@ export default class Login extends React.Component {
         return(
             <div className="box">
 
-                <div className="container d-flex justify-content-center">
+                <div className="container d-flex justify-content-center p-5">
                         <div className={"form-box col-md-4 "+(this.state.animation && "transition")}>
                             <div className="justify-content-center d-flex mb-5">
                                 <i className="material-icons text-white user-big-icon">person_outline</i>
