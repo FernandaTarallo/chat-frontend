@@ -47,7 +47,7 @@
 .avatar {
   width: 250px;
   height: 30px;
-  background: rgb(65,120,177);
+  background: #1D8AB4;
   border-radius: 30px 30px 0% 0%;
   margin-left: 50px;
   position: relative;
@@ -68,14 +68,15 @@
   border-radius: 50%;
 }
 .txt{
+  word-break: break-all;
   position: relative;
   color: #fff;
   width: 300px;
   height: auto;
-  background:rgb(65,120,177);
+  background:#1D8AB4;
   border-radius: 0% 0% 30px 30px;
   box-sizing: border-box;
-  padding: 0 10px 30px 60px;
+  padding: 0 20px 20px 60px;
   box-shadow: 0 6px 10px 0 rgba(0,0,0,0.25);
 }
 
@@ -90,7 +91,7 @@
 .avatar-right {
   width: 250px;
   height: 30px;
-  background: rgb(65,120,177);
+  background: #1D8AB4;
   border-radius: 30px 30px 0% 0%;
   margin-right: 50px;
   position: relative;
@@ -111,14 +112,15 @@
   border-radius: 50%;
 }
 .txt-right{
+  word-break: break-all;
   position: relative;
   color: #fff;
   width: 300px;
   height: auto;
-  background:rgb(65,120,177);
+  background:#1D8AB4;
   border-radius: 0% 0% 30px 30px;
   box-sizing: border-box;
-  padding: 0 10px 30px 30px;
+  padding: 0px 60px 20px 20px;
   box-shadow: 0 6px 10px 0 rgba(0,0,0,0.25);
   float:right;
   clear:right;
@@ -139,7 +141,7 @@
   border-radius: 20px;
   margin-left:15px;
   padding: 20px; 
-  width: 650px;
+  width: 85%;
   height: 15px; 
 }
 a:link{
@@ -150,7 +152,7 @@ a:link{
   padding:5px;
 }
 .btn{
-  background-color: rgb(65,120,177);
+  background-color: #1D8AB4;
   border-radius: 15px 50px 30px;
   border: 2px;
   margin-right:15px;
@@ -248,8 +250,9 @@ a:link{
 }
 
 .user-chat{
-  height:40px;
+  height:80px;
   width:330px;
+  position:relative;
   border-bottom: 1px solid #EDEDED;
 }
 .user-chat:hover{

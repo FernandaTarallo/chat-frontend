@@ -34,10 +34,39 @@ export default class Layout extends React.Component {
 
         const user = await api.get('/users/'+userId)
 
+        const conversations = await api.get('/conversations')
+
+        const usersConversations = []
+
+        await conversations.data.map(async(conversation) => {
+
+            let id = ''
+
+            if(conversation.idUserOne != userId) {
+                id = conversation.idUserOne
+            } else {
+                id = conversation.idUserTwo
+            }
+
+            let convUser = await api.get('/users/'+id)
+
+            usersConversations.push({
+                conversationId: conversation.id,
+                user: convUser.data
+            })
+
+            this.setState({
+                conversations: usersConversations
+            })
+
+        })
+
         this.setState({
             user: user.data,
-            socket: socket, 
+            socket: socket,
         })
+
+        
 
         socket.on('clients_update', async (data) => {
 
@@ -79,12 +108,17 @@ export default class Layout extends React.Component {
 
     }
 
-    selectUser = async (user) => {
+    selectUser = async (item) => {
+
         this.setState({
-            userSelected: user
+            userSelected: item.user
         })
 
-        messages
+        const messages = await api.get('messages/'+item.conversationId)
+
+        this.setState({
+            messages: messages.data
+        })
     }
 
     changeHandler = event => {
@@ -105,11 +139,14 @@ export default class Layout extends React.Component {
         try{
             const message = await api.post('/messages/', {
                 idUserOne: this.state.user.id,
-                idUserTwo: this.state.userSelected.user.id,
+                idUserTwo: this.state.userSelected.id,
                 sendFrom: this.state.user.id,
                 text: this.state.messageText
             })
 
+            this.setState({
+                messageText: '',
+            })
         }catch(err){
             console.log(JSON.stringify(err));
         }
@@ -121,29 +158,31 @@ export default class Layout extends React.Component {
     render(){
         return(
             <div className="box">
-                {this.state.ready &&
+                {this.state.ready &&  
                     <div className="col-md-10 p-0">
                         <div className="content w-100 d-flex">
                             <div className="all-chat d-flex flex-column">
 
                                 <div className="all-chat-head d-flex align-items-center">
-                                    {/* <Photo/> */}
+                                    <Photo/>
                                     <Name name={this.state.user.name}/>
                                 </div>
                                 <div className="search-box d-flex align-items-center justify-content-center">
                                     <SearchBox/>
+                                    
                                 </div>
                                 <div class="d-flex bd-highlight">
                                     <div className="conversations flex-column flex-grow-1">
-                                       
-                                        {this.state.usersList.map(item => {
-                                            {/* <Photo/> */}
+                                        {this.state.conversations.map(item => {
+                                         
                                             return (
-                                                <div className="user-chat flex-row align-items-center" onClick={() => this.selectUser(item)}>
-                                                    <Name name={item.user.name}/>
-                                                </div>
+                                                <div className="user-chat d-flex flex-row align-items-center" onClick={() => this.selectUser(item)}>
+                                                <Photo/>
+                                                <Name name={item.user.name}/>
+                                            </div>
                                             )
                                         })}
+
                                                                     
                                     </div>
                                 </div>
@@ -152,8 +191,8 @@ export default class Layout extends React.Component {
                             
                             <div className="chat d-flex flex-grow-1 flex-column">
                                 <div class="chat-head d-flex flex-row align-items-center">
-                                    {/* <Photo/> */}
-                                    <Name name={this.state.user.name}/>
+                                    <Photo/>
+                                    <Name name={this.state.userSelected ? this.state.userSelected.name : ''}/>
                                 </div>
                                 
                                     <div className="box-message flex-grow-1 bd-highlight">
