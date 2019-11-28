@@ -1,4 +1,5 @@
 import React from "react"
+import moment from "moment"
 import { Link } from 'react-router-dom'
 
 export default class Message extends React.Component {
@@ -15,7 +16,11 @@ export default class Message extends React.Component {
                 <div className={this.props.side == 'right' ? 'avatar-right' : 'avatar'}>
                     <img className={this.props.side == 'right' ? 'person-message-right' : 'person-message'} src={require('../../batman.png')}/>
                 </div>
-                <div className={this.props.side == 'right' ? 'txt-right' : 'txt'}>{this.props.text}</div>
+                <div className={this.props.side == 'right' ? 'txt-right' : 'txt'}>
+                    {this.props.text}<br/><br/>
+                    <span className="small">{moment(this.props.data).format('DD/MM/YYYY HH:mm:ss')}</span>
+                </div>
+              
             </div>
 
             // <div className="container-right">

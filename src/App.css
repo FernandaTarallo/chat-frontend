@@ -267,3 +267,11 @@ a:link{
   transition: transform 0.5s;
   transform: rotate(360deg);
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.selected {
+  background-color: #1D8AB4;
+}
