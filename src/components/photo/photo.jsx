@@ -31,9 +31,7 @@ export default class Photo extends React.Component {
     render(){
         return(
             <div className="">
-                {this.state.ready &&
-                    <img className="person-photo mt-3 ml-2" src={this.state.image}/>
-                }
+                <img className="person-photo mt-3 ml-2" src={this.state.ready ? this.state.image : ''}/>
             </div>
         );
     }

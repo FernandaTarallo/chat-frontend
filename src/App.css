@@ -31,7 +31,7 @@
   border-radius: 50%;
 }
 .search-box{
-  height:50px;
+  height:44px;
   background-color:#F8F8F8;
 }
 .box-message{
@@ -151,7 +151,7 @@ a:link{
   border-radius: 15px 50px 30px;
   padding:5px;
 }
-.btn{
+.btn-1{
   background-color: #1D8AB4;
   border-radius: 15px 50px 30px;
   border: 2px;
@@ -162,7 +162,7 @@ a:link{
   font-size:15px;
   box-shadow: 0 0 10px 0 rgba(0,0,0,0.75), 0 0 0 3px rgba(255,255,255,1.0);
 }
-.btn:hover{
+.btn-1:hover{
   background-image: linear-gradient(to right, #2B3074 , #AE85AF);
   color:#fff;
 }
@@ -182,10 +182,21 @@ a:link{
 }
 
 .btn-register{
-  background-color:#1D8AB4;
+  background-color: #1D8AB4;
+  border-radius: 15px 50px 30px;
+  border: 1px;
+  width:100px;
+  padding:7px;
   color:#fff;
+  font-size:15px;
+  align-self:center;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.75), 0 0 0 3px rgba(255,255,255,1.0);
 }
 
+.btn-register:hover{
+  background-image: linear-gradient(to right, #2B3074 , #AE85AF);
+  color:#fff;
+}
 .title-register{
   font-family: 'Montserrat', sans-serif;
   color:#3d4255;
@@ -234,7 +245,7 @@ a:link{
 
 .conversations{
   overflow-y: scroll;
-  height: 70vh;
+  height: 65vh;
 }
 
 .chat{
@@ -273,5 +284,5 @@ a:link{
 }
 
 .selected {
-  background-color: #1D8AB4;
+  background-color: #EDEDED;
 }
