@@ -14,7 +14,7 @@ export default class Message extends React.Component {
          
             <div className={this.props.side == 'right' ? 'container-right' : 'container'}>
                 <div className={this.props.side == 'right' ? 'avatar-right' : 'avatar'}>
-                    <img className={this.props.side == 'right' ? 'person-message-right' : 'person-message'} src={require('../../batman.png')}/>
+                    <img className={this.props.side == 'right' ? 'person-message-right' : 'person-message'} src={require('../../user.jpg')}/>
                 </div>
                 <div className={this.props.side == 'right' ? 'txt-right' : 'txt'}>
                     {this.props.text}<br/><br/>

@@ -159,8 +159,8 @@ export default class Login extends React.Component {
                                         <input onChange={this.changeHandler} name="password" type="password" className="form-control form-control-lg" value={this.state.password} placeholder="Senha"/>
                                     </div>
                                 </div>
-                                <div className="text-center">
-                                    <button onClick={this.state.register ? this.register : this.login} className="btn btn-lg btn-register btn-block">{this.state.register ? 'REGISTRAR' : 'LOGAR'}</button>
+                                <div className="text-center d-flex flex-column justify-content-center">
+                                    <button onClick={this.state.register ? this.register : this.login} className="btn btn-lg btn-register btn-block">{this.state.register ? 'Resgistrar' : 'Logar'}</button>
                                     {this.state.register
                                         ? <p className="mt-3">Clique aqui para efetuar o <span className="link" onClick={this.switchMode}>login.</span></p>
                                         : <p className="mt-3">Não possui uma conta? <span className="link" onClick={this.switchMode}>Cadastre-se!</span></p>

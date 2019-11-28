@@ -11,7 +11,7 @@ export default class Photo extends React.Component {
     render(){
         return(
             <div className="">
-                <img className="person-photo mt-3 ml-2" src={require('../../batman.png')}/>
+                <img className="person-photo mt-3 ml-2" src={require('../../user.jpg')}/>
             </div>
         );
     }
