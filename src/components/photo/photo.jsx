@@ -6,32 +6,32 @@ export default class Photo extends React.Component {
     
     constructor(props) {
         super(props)
-        this.state = {
-            image: null,
-            ready: false
-        }
+        // this.state = {
+        //     image: null,
+        //     ready: false
+        // }
     }
 
-    githubRequest = async () => {
-        const request = await axios.get('https://api.github.com/users/'+this.props.name)
+    // githubRequest = async () => {
+    //     const request = await axios.get('https://api.github.com/users/'+this.props.name)
 
-        this.setState({
-            image: request.data.avatar_url
-        })
-    }
+    //     this.setState({
+    //         image: request.data.avatar_url
+    //     })
+    // }
 
-    componentDidMount = async() => {
-        await this.githubRequest()
+    // componentDidMount = async() => {
+    //     await this.githubRequest()
 
-        this.setState({
-            ready: true
-        })
-    }
+    //     this.setState({
+    //         ready: true
+    //     })
+    // }
 
     render(){
         return(
             <div className="">
-                <img className="person-photo mt-3 ml-2" src={this.state.ready ? this.state.image : ''}/>
+                <img className="person-photo mt-3 ml-2" src={require("../../user.jpg")}/>
             </div>
         );
     }
