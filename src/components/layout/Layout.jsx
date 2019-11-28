@@ -10,6 +10,7 @@ import Photo from '../photo/photo'
 import Name from '../name/name'
 import * as io from 'socket.io-client'
 import { throwStatement } from "@babel/types";
+import { setTimeout } from "timers";
 
 export default class Layout extends React.Component {
     
@@ -122,11 +123,14 @@ export default class Layout extends React.Component {
                 user: convUser.data
             })
 
+        })
+
+        setTimeout(() => {
             this.setState({
                 conversations: usersConversations
             })
-
-        })
+        }, 1000);
+      
     }
 
     selectUser = async (item) => {
@@ -207,7 +211,7 @@ export default class Layout extends React.Component {
                             <div className="all-chat d-flex flex-column">
 
                                 <div className="all-chat-head d-flex align-items-center">
-                                    <Photo/>
+                                    <Photo name={this.state.user.name}/>
                                     <Name name={this.state.user.name}/>
                                 </div>
                                 <div className="search-box d-flex align-items-center justify-content-center">
@@ -232,7 +236,7 @@ export default class Layout extends React.Component {
                                                 
                                                     return (
                                                         <div className={"user-chat d-flex flex-row align-items-center "+( item.user.id == this.state.selectedUserId && "selected")} onClick={() => this.selectUser(item)}>
-                                                        <Photo/>
+                                                        <Photo name={item.user.name}/>
                                                         <Name name={item.user.name}/>
                                                     </div>
                                                     )
@@ -250,7 +254,7 @@ export default class Layout extends React.Component {
                                                 
                                                     return (
                                                         <div className={"user-chat d-flex flex-row align-items-center "+( item.user.id == this.state.selectedUserId && "selected")} onClick={() => this.selectUser(item)}>
-                                                        <Photo/>
+                                                        <Photo name={item.user.name}/>
                                                         <Name name={item.user.name}/>
                                                     </div>
                                                     )
@@ -267,7 +271,7 @@ export default class Layout extends React.Component {
                             
                             <div className="chat d-flex flex-grow-1 flex-column">
                                 <div class="chat-head d-flex flex-row align-items-center">
-                                    <Photo/>
+                                    <Photo name={this.state.userSelected ? this.state.userSelected.name : ''}/>
                                     <Name name={this.state.userSelected ? this.state.userSelected.name : ''}/>
                                 </div>
                                 
@@ -277,6 +281,7 @@ export default class Layout extends React.Component {
                                                 <Message
                                                     text={message.text}
                                                     data={message.createdAt} 
+                                                    userId={message.sendFrom}
                                                     side={
                                                         message.sendFrom === this.state.user.id ? 'right' : 'left'
                                                     }

@@ -17,6 +17,7 @@ export default class Login extends React.Component {
             username: '',
             password: '',
             classForm: "",
+            selectedFile: '',
             redirect: false
         }
     }
@@ -41,9 +42,9 @@ export default class Login extends React.Component {
             const register = await api.post('/users', {
                 email: this.state.email,
                 name: this.state.username,
-                password: this.state.password
-            })
-            
+                password: this.state.password,
+            }) 
+          
             this.switchMode()
 
             const Toast = Swal.mixin({
@@ -125,16 +126,18 @@ export default class Login extends React.Component {
                             <div className="justify-content-center d-flex mb-5">
                                 <i className="material-icons text-white user-big-icon">person_outline</i>
                             </div>
-                            <form onSubmit={this.register} method="POST">
+                            <form onSubmit={this.register} method="POST" enctype="multipart/form-data">
                                 {this.state.register && 
-                                    <div className="form-group mb-4">
-                                        <div className="input-group">
-                                            <div className="input-group-prepend">
-                                                <span className="input-group-text">
-                                                    <i className="material-icons gray">person_outline</i>
-                                                </span>
+                                    <div>
+                                        <div className="form-group mb-4">
+                                            <div className="input-group">
+                                                <div className="input-group-prepend">
+                                                    <span className="input-group-text">
+                                                        <i className="material-icons gray">person_outline</i>
+                                                    </span>
+                                                </div>
+                                                <input onChange={this.changeHandler} name="username" type="text" className="form-control form-control-lg" value={this.state.username} placeholder="Digite seu username"/>
                                             </div>
-                                            <input onChange={this.changeHandler} name="username" type="text" className="form-control form-control-lg" value={this.state.username} placeholder="Digite seu username"/>
                                         </div>
                                     </div>
                                 }
